@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# print all individual values, each with int: prefix
+./p4 -e chicago illinois nashville tennessee miami florida
+

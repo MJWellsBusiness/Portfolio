@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo RMB 526.986  15183.808
+
+/usr/bin/time -p  ./p1 7   100

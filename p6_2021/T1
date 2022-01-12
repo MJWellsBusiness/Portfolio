@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo
+
+export P6_NUM_TO_SEND=9
+
+./p6
+
+echo $?

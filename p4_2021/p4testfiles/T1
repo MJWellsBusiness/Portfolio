@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cat > TEMPIN <<EOF
+nashville tennessee
+chicago illinois
+miami florida
+EOF
+
+# print all lines, each with int: prefix
+./p4 TEMPIN
+
+rm -f TEMPIN*
+

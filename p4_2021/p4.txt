@@ -1,0 +1,71 @@
+
+                             Computer Systems
+                                 Project 4
+                                 Fall 2021
+
+
+turnin code:  cs_p4
+
+
+Write a C/C++ program that performs the tasks described below.
+
+The program should fork one process.  Have the new process execve the
+program named /usr/bin/shuf.  Use dup2 (or dup) with a pipe to establish a way
+for the original process to capture stdout from shuf.  (You do NOT need to
+pass stdin to shuf.) The program will accept command-line arguments that it
+passes along to shuf via execve.  The only shuf cmd-line args that will be used
+for testing, are filenames, and -i and -e with their related sub-arguments.
+Sample executions are given below.
+
+Be sure to have this:
+
+    alarm(90);
+
+as the first executable line in *BOTH* processes, which means you will
+need to do it in at least one of the processes after the fork.
+
+Sample runs are provided below.
+
+The original process should capture stdout from shuf and then print EACH line
+prefixed by  N:   where N is replaced by an integer indicating the number of
+the line of output, beginning with 1.
+For correctness, it is important that EACH line have the prefix.
+
+Suppose that TEMPIN contains these lines:
+    nashville tennessee
+    chicago illinois
+    miami florida
+
+If the program is run as:
+   ./p4 TEMPIN
+then, depending on the order of the shuffle, it might print:
+    1: chicago illinois
+    2: miami florida
+    3: nashville tennessee
+
+If run this way:
+   ./p4 -e chicago illinois nashville tennessee miami florida
+then, depending on the order of the shuffle, it might print:
+    1: chicago
+    2: florida
+    3: tennessee
+    4: illinois
+    5: nashville
+    6: miami
+
+Another sample run:
+    ./p4 -i 100-105
+
+--------
+
+TURNIN info:
+    You should submit a tar file of a directory which contains all of the
+    required files (makefile, C source files, header files, etc).
+    Sample tar command to create a tar file from a dir named p4dir:
+	tar cvf p4.tar ./p4dir  ## do *NOT* use full pathname of the dir
+    After un-tarring your project, I will cd to the dir containing
+    it and type:
+        rm -rf p4
+        rm -f *.o
+        make
+    It should build an executable named p4 as described above.
